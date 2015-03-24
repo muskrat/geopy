@@ -236,9 +236,11 @@ class Point(object):
             else:
                 degrees += more
 
-        if direction in [None, 'N', 'E']:
+        if not direction:
             return degrees
-        elif direction in ['S', 'W']:
+        elif direction.upper() in ['N', 'E', 'NORTH', 'EAST']:
+            return degrees
+        elif direction.upper() in ['S', 'W', 'SOUTH', 'WEST']:
             return -degrees
         else:
             raise ValueError("Invalid direction! Should be one of [NSEW].")
